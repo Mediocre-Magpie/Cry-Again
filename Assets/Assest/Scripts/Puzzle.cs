@@ -5,50 +5,77 @@ using UnityEngine.UI;
 
 public class Puzzle : MonoBehaviour
 {
-    [SerializeField] GameObject interactText;
+    [SerializeField] GameObject stopPuzzle;
     [SerializeField] GameObject Player;
     [SerializeField] GameObject puzzle;
 
-    bool interactOn = false;
+    public int id;
 
-
+    private void Start()
+    {
+        GameEvents.current.onPuzzleTriggerEnter += PuzzleTriggerEnter;
+        
+    }
 
     private void Awake()
     {
-        interactOn = false;
-        interactText.SetActive(false);
+        stopPuzzle.SetActive(false);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && interactOn == true)
-        {
-            Player.GetComponent<PlayerController>().enabled = false;
-            puzzle.GetComponent<GyrpMovement>().enabled = true;
-        }
+        PuzzleTriggerEnter(id);
+       
     }
 
-    void OnTriggerEnter(Collider collision)
-    {
 
-        if (collision.gameObject.tag=="Player")
-        {
-            interactText.SetActive(true);
-            interactOn = true;
-                     
-          
-        }
-            
-         
-    }
+   
 
-    void OnTriggerExit(Collider collision)
-    {
-        interactText.SetActive(false);
-    }
-     
 
     
-   
+     
+    void PuzzleTriggerEnter(int id)
+    {
+        if (id == 1)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Player.GetComponent<PlayerController>().enabled = false;
+                puzzle.GetComponent<GyrpMovement>().enabled = true;
+                stopPuzzle.SetActive(true);
+                //Debug.Log("yes");
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.R) && Player.GetComponent<PlayerController>().enabled == false)
+            {
+                Player.GetComponent<PlayerController>().enabled = true;
+                puzzle.GetComponent<GyrpMovement>().enabled = false;
+                stopPuzzle.SetActive(false);
+            }
+        }
         
+       if (id == 0)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Player.GetComponent<PlayerController>().enabled = false;
+                puzzle.GetComponent<Puzzletest>().enabled = true;
+                stopPuzzle.SetActive(true);
+                //Debug.Log("yes");
+            }
+
+            if (Input.GetKeyDown(KeyCode.R) && Player.GetComponent<PlayerController>().enabled == false)
+            {
+                Player.GetComponent<PlayerController>().enabled = true;
+                puzzle.GetComponent<Puzzletest>().enabled = false;
+                stopPuzzle.SetActive(false);
+            }
+        }  
+        
+        
+    }
+
+   
+   
 }

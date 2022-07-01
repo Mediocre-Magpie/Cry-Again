@@ -7,7 +7,7 @@ public class GyrpMovement : MonoBehaviour
     
     float smooth = 5f;
     float tiltAngle = 60f;
-
+    [SerializeField] BoxCollider box;
 
     // Start is called before the first frame update
     private void Awake()
@@ -27,5 +27,16 @@ public class GyrpMovement : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smooth);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "ball")
+        {
+            win();
+        }
+    }
 
+    void win()
+    {
+        Debug.Log("win!"); 
+    }
 }
