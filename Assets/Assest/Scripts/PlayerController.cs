@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     
+
     public CharacterController characterController;
 
     public float speed = 5f;
@@ -16,6 +17,8 @@ public class PlayerController : MonoBehaviour
 
     Vector3 velocity;
     bool isGrounded;
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -44,5 +47,9 @@ public class PlayerController : MonoBehaviour
 
         characterController.Move(velocity * Time.deltaTime);
 
+
     }
+
+    
+
 }
