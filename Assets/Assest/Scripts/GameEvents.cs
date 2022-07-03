@@ -31,5 +31,13 @@ public class GameEvents : MonoBehaviour
         }
     }
 
-   
+    public event Action<int> onJugTriggerEnter;
+    public void JigTriggerEnter(int id)
+    {
+        if (onJugTriggerEnter != null)
+        {
+            onJugTriggerEnter(id);
+        }
+    }
+
 }

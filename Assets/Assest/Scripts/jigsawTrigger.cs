@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class jigsawTrigger : MonoBehaviour
 {
     [SerializeField] GameObject interactText;
     [SerializeField] GameObject puzzle;
 
+    public static bool inJigsawTrigger;
 
     public int id;
     private void Awake()
@@ -21,6 +23,8 @@ public class jigsawTrigger : MonoBehaviour
         {
             interactText.SetActive(true);
 
+            inJigsawTrigger = true;
+
             GameEvents.current.PuzzleTriggerEnter(id);
         }
     }
@@ -28,7 +32,11 @@ public class jigsawTrigger : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         puzzle.GetComponent<Puzzletest>().enabled = false;
+        
         interactText.SetActive(false);
+        
+        inJigsawTrigger = false;
+        
         GameEvents.current.PuzzleTriggerExit(id);
     }
 }

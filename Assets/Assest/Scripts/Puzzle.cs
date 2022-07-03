@@ -14,29 +14,28 @@ public class Puzzle : MonoBehaviour
     private void Start()
     {
         GameEvents.current.onPuzzleTriggerEnter += PuzzleTriggerEnter;
-        
+        //GameEvents.current.onJugTriggerEnter += JugTriggerEnter;
     }
 
     private void Awake()
     {
+
         stopPuzzle.SetActive(false);
-    }
-
-    private void Update()
-    {
-        PuzzleTriggerEnter(id);
-       
-    }
-
-
-   
-
-
     
+    }
+
+
+    public void Update()
+    {
+
+        PuzzleTriggerEnter(id);
+    
+    }   
      
+
     void PuzzleTriggerEnter(int id)
     {
-        if (id == 1)
+        if (id == 1 && GyroTrigger.inGyroTrigger == true)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -46,7 +45,6 @@ public class Puzzle : MonoBehaviour
                 //Debug.Log("yes");
             }
 
-
             if (Input.GetKeyDown(KeyCode.R) && Player.GetComponent<PlayerController>().enabled == false)
             {
                 Player.GetComponent<PlayerController>().enabled = true;
@@ -55,14 +53,14 @@ public class Puzzle : MonoBehaviour
             }
         }
         
-       if (id == 0)
-        {
+       if (id == 2 && jigsawTrigger.inJigsawTrigger == true)
+       {
             if (Input.GetKeyDown(KeyCode.E))
             {
                 Player.GetComponent<PlayerController>().enabled = false;
                 puzzle.GetComponent<Puzzletest>().enabled = true;
                 stopPuzzle.SetActive(true);
-                //Debug.Log("yes");
+                Debug.Log("yes");
             }
 
             if (Input.GetKeyDown(KeyCode.R) && Player.GetComponent<PlayerController>().enabled == false)
@@ -71,11 +69,31 @@ public class Puzzle : MonoBehaviour
                 puzzle.GetComponent<Puzzletest>().enabled = false;
                 stopPuzzle.SetActive(false);
             }
-        }  
-        
-        
+       }  
+               
     }
 
-   
-   
+    //void JugTriggerEnter(int id)
+    //{
+
+       // if (id == 2 && jigsawTrigger.inJigsawTrigger == true)
+        //{
+          //  if (Input.GetKeyDown(KeyCode.E))
+            //{
+              //  Player.GetComponent<PlayerController>().enabled = false;
+                //puzzle.GetComponent<Puzzletest>().enabled = true;
+                //stopPuzzle.SetActive(true);
+                //Debug.Log("yes");
+           // }
+
+            //if (Input.GetKeyDown(KeyCode.R) && Player.GetComponent<PlayerController>().enabled == false)
+            //{
+              //  Player.GetComponent<PlayerController>().enabled = true;
+                //puzzle.GetComponent<Puzzletest>().enabled = false;
+                //stopPuzzle.SetActive(false);
+            //}
+        //}
+
+    //}
+
 }
