@@ -14,7 +14,7 @@ public class Puzzle : MonoBehaviour
     private void Start()
     {
         GameEvents.current.onPuzzleTriggerEnter += PuzzleTriggerEnter;
-        //GameEvents.current.onJugTriggerEnter += JugTriggerEnter;
+        GameEvents.current.winCondition += WinCondition;
     }
 
     private void Awake()
@@ -72,28 +72,10 @@ public class Puzzle : MonoBehaviour
        }  
                
     }
-
-    //void JugTriggerEnter(int id)
-    //{
-
-       // if (id == 2 && jigsawTrigger.inJigsawTrigger == true)
-        //{
-          //  if (Input.GetKeyDown(KeyCode.E))
-            //{
-              //  Player.GetComponent<PlayerController>().enabled = false;
-                //puzzle.GetComponent<Puzzletest>().enabled = true;
-                //stopPuzzle.SetActive(true);
-                //Debug.Log("yes");
-           // }
-
-            //if (Input.GetKeyDown(KeyCode.R) && Player.GetComponent<PlayerController>().enabled == false)
-            //{
-              //  Player.GetComponent<PlayerController>().enabled = true;
-                //puzzle.GetComponent<Puzzletest>().enabled = false;
-                //stopPuzzle.SetActive(false);
-            //}
-        //}
-
-    //}
+    void WinCondition(int id)
+    {
+        Debug.Log("win");
+    }
+    
 
 }

@@ -40,4 +40,12 @@ public class GameEvents : MonoBehaviour
         }
     }
 
+    public event Action<int> winCondition;
+    public void WinCondition(int id)
+    {
+        if (winCondition != null)
+        {
+            winCondition(id);
+        }
+    }
 }
