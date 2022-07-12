@@ -30,48 +30,43 @@ public class Puzzle : MonoBehaviour
 
         PuzzleTriggerEnter(id);
     
-    }   
-     
+    }
+
 
     void PuzzleTriggerEnter(int id)
     {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            ActivatePuzzle(true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.R) && Player.GetComponent<PlayerController>().enabled == false)
+        {
+            ActivatePuzzle(false);
+        }
+
+
+
+
+        
+    }
+
+    void ActivatePuzzle(bool enabled)
+    {
+        Player.GetComponent<PlayerController>().enabled = !enabled; 
+
         if (id == 1 && GyroTrigger.inGyroTrigger == true)
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                Player.GetComponent<PlayerController>().enabled = false;
-                puzzle.GetComponent<GyrpMovement>().enabled = true;
-                stopPuzzle.SetActive(true);
-                //Debug.Log("yes");
-            }
-
-            if (Input.GetKeyDown(KeyCode.R) && Player.GetComponent<PlayerController>().enabled == false)
-            {
-                Player.GetComponent<PlayerController>().enabled = true;
-                puzzle.GetComponent<GyrpMovement>().enabled = false;
-                stopPuzzle.SetActive(false);
-            }
+            puzzle.GetComponent<GyrpMovement>().enabled = enabled;
         }
-        
-       if (id == 2 && jigsawTrigger.inJigsawTrigger == true)
-       {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                Player.GetComponent<PlayerController>().enabled = false;
-                puzzle.GetComponent<Puzzletest>().enabled = true;
-                stopPuzzle.SetActive(true);
-                Debug.Log("yes");
-            }
+        else if (id == 2 && jigsawTrigger.inJigsawTrigger == true)
+        {
+            puzzle.GetComponent<Puzzletest>().enabled = enabled;
+        }
 
-            if (Input.GetKeyDown(KeyCode.R) && Player.GetComponent<PlayerController>().enabled == false)
-            {
-                Player.GetComponent<PlayerController>().enabled = true;
-                puzzle.GetComponent<Puzzletest>().enabled = false;
-                stopPuzzle.SetActive(false);
-            }
-       }  
-               
+        stopPuzzle.SetActive(enabled);
     }
+
     void WinCondition(int id)
     {
         Debug.Log("win");
