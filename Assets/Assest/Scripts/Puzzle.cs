@@ -14,68 +14,63 @@ public class Puzzle : MonoBehaviour
     private void Start()
     {
         GameEvents.current.onPuzzleTriggerEnter += PuzzleTriggerEnter;
-        
+        GameEvents.current.winCondition += WinCondition;
     }
 
     private void Awake()
     {
+
         stopPuzzle.SetActive(false);
-    }
-
-    private void Update()
-    {
-        PuzzleTriggerEnter(id);
-       
-    }
-
-
-   
-
-
     
-     
+    }
+
+
+    public void Update()
+    {
+
+        PuzzleTriggerEnter(id);
+    
+    }
+
+
     void PuzzleTriggerEnter(int id)
     {
-        if (id == 1)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                Player.GetComponent<PlayerController>().enabled = false;
-                puzzle.GetComponent<GyrpMovement>().enabled = true;
-                stopPuzzle.SetActive(true);
-                //Debug.Log("yes");
-            }
-
-
-            if (Input.GetKeyDown(KeyCode.R) && Player.GetComponent<PlayerController>().enabled == false)
-            {
-                Player.GetComponent<PlayerController>().enabled = true;
-                puzzle.GetComponent<GyrpMovement>().enabled = false;
-                stopPuzzle.SetActive(false);
-            }
+            ActivatePuzzle(true);
         }
-        
-       if (id == 0)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                Player.GetComponent<PlayerController>().enabled = false;
-                puzzle.GetComponent<Puzzletest>().enabled = true;
-                stopPuzzle.SetActive(true);
-                //Debug.Log("yes");
-            }
 
-            if (Input.GetKeyDown(KeyCode.R) && Player.GetComponent<PlayerController>().enabled == false)
-            {
-                Player.GetComponent<PlayerController>().enabled = true;
-                puzzle.GetComponent<Puzzletest>().enabled = false;
-                stopPuzzle.SetActive(false);
-            }
-        }  
-        
+        if (Input.GetKeyDown(KeyCode.R) && Player.GetComponent<PlayerController>().enabled == false)
+        {
+            ActivatePuzzle(false);
+        }
+
+
+
+
         
     }
 
-   
-   
+    void ActivatePuzzle(bool enabled)
+    {
+        Player.GetComponent<PlayerController>().enabled = !enabled; 
+
+        if (id == 1 && GyroTrigger.inGyroTrigger == true)
+        {
+            puzzle.GetComponent<GyrpMovement>().enabled = enabled;
+        }
+        else if (id == 2 && jigsawTrigger.inJigsawTrigger == true)
+        {
+            puzzle.GetComponent<Puzzletest>().enabled = enabled;
+        }
+
+        stopPuzzle.SetActive(enabled);
+    }
+
+    void WinCondition(int id)
+    {
+        Debug.Log("win");
+    }
+    
+
 }

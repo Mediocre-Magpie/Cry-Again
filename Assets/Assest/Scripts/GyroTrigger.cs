@@ -8,6 +8,8 @@ public class GyroTrigger : MonoBehaviour
     [SerializeField] GameObject interactText;
     [SerializeField] GameObject puzzle;
 
+    public static bool inGyroTrigger;
+
     public int id;
 
     private void Awake()
@@ -21,7 +23,9 @@ public class GyroTrigger : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             interactText.SetActive(true);
-            
+
+            inGyroTrigger = true;
+
             GameEvents.current.PuzzleTriggerEnter(id);
         }
     }
@@ -29,7 +33,11 @@ public class GyroTrigger : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         puzzle.GetComponent<GyrpMovement>().enabled = false;
+
         interactText.SetActive(false);
+
+        inGyroTrigger = false;
+
         GameEvents.current.PuzzleTriggerExit(id);
     }
 
