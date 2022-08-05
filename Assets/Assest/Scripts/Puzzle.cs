@@ -51,7 +51,7 @@ public class Puzzle : MonoBehaviour
         
     }
 
-    void ActivatePuzzle(bool enabled)
+    public void ActivatePuzzle(bool enabled)
     {
         Player.GetComponent<PlayerController>().enabled = !enabled; 
 
