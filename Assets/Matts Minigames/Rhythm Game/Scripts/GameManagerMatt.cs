@@ -9,7 +9,7 @@ public class GameManagerMatt : MonoBehaviour
 
     public bool startPlaying;
 
-    public ArrowScroller theAS;
+    //public ArrowScroller theAS;
 
     public static GameManagerMatt instance;
 
@@ -27,7 +27,7 @@ public class GameManagerMatt : MonoBehaviour
             if(Input.anyKeyDown)
             {
                 startPlaying = true;
-                theAS.hasStarted = true;
+               // theAS.hasStarted = true;
 
                 theMusic.Play();
             }
