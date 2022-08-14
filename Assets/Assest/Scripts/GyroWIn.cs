@@ -6,7 +6,7 @@ public class GyroWIn : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] Animator animator;
-    [SerializeField] GameObject light;
+    [SerializeField] GameObject lights;
 
 
     private void Start()
@@ -16,7 +16,8 @@ public class GyroWIn : MonoBehaviour
     }
     public void gyroWin()
     {
-       light.SetActive(true);
+       lights.SetActive(true);
         animator.SetTrigger("Open");
+
     }
 }
