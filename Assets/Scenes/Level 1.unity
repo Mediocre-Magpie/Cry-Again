@@ -8413,6 +8413,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Childs room light (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1889260257924054, guid: a79de2542b0aa7e4bba5b1eb8eed68f8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4316290140170186, guid: a79de2542b0aa7e4bba5b1eb8eed68f8, type: 3}
       propertyPath: m_RootOrder
       value: 5
