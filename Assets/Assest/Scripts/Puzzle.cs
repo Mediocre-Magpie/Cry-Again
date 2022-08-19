@@ -51,13 +51,14 @@ public class Puzzle : MonoBehaviour
         
     }
 
-    void ActivatePuzzle(bool enabled)
+    public void ActivatePuzzle(bool enabled)
     {
         Player.GetComponent<PlayerController>().enabled = !enabled; 
 
         if (id == 1 && GyroTrigger.inGyroTrigger == true)
         {
             puzzle.GetComponent<GyrpMovement>().enabled = enabled;
+           
         }
         else if (id == 2 && jigsawTrigger.inJigsawTrigger == true)
         {
