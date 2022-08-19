@@ -1,42 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class jigsawTrigger : MonoBehaviour
+public class SwitchOneScript : MonoBehaviour
 {
     [SerializeField] GameObject interactText;
-    [SerializeField] GameObject puzzle;
+    [SerializeField] GameObject SecondSwitch;
+    
+    public static bool inSwitchOneTrigger;
 
-    public static bool inJigsawTrigger;
-
-    public int id;
+   
+    // Start is called before the first frame update
     private void Awake()
     {
         interactText.SetActive(false);
     }
 
-    
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             interactText.SetActive(true);
 
-            inJigsawTrigger = true;
+            inSwitchOneTrigger = true;
 
-            GameEvents.current.PuzzleTriggerEnter(id);
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                SecondSwitch.SetActive(true);
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         
-        
+
         interactText.SetActive(false);
+
+        inSwitchOneTrigger = false;
+
+       
+    }
+    // Update is called once per frame
+    void Update()
+    {
         
-        inJigsawTrigger = false;
-        
-        GameEvents.current.PuzzleTriggerExit(id);
     }
 }

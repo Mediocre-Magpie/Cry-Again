@@ -8,6 +8,9 @@ public class Puzzle : MonoBehaviour
     [SerializeField] GameObject stopPuzzle;
     [SerializeField] GameObject Player;
     [SerializeField] GameObject puzzle;
+    [SerializeField] GameObject SecondSwitch;
+    [SerializeField] GameObject Light;
+    [SerializeField] GameObject Jigsaw;
 
     public int id;
 
@@ -40,7 +43,7 @@ public class Puzzle : MonoBehaviour
             ActivatePuzzle(true);
         }
 
-        if (Input.GetKeyDown(KeyCode.R) && Player.GetComponent<PlayerController>().enabled == false)
+        if (Input.GetKeyDown(KeyCode.R)) //&& Player.GetComponent<PlayerController>().enabled == false
         {
             ActivatePuzzle(false);
         }
@@ -62,9 +65,18 @@ public class Puzzle : MonoBehaviour
         }
         else if (id == 2 && jigsawTrigger.inJigsawTrigger == true)
         {
-            puzzle.GetComponent<Puzzletest>().enabled = enabled;
+            Debug.Log("Load");
         }
 
+        else if (id == 3 && SwitchOneScript.inSwitchOneTrigger == true)
+        {
+            SecondSwitch.SetActive(true);
+        }
+        else if (id == 4 && SwitchTrigger.inTwoTrigger == true)
+        {
+            Jigsaw.SetActive(true);
+            Light.SetActive(true);
+        }
         stopPuzzle.SetActive(enabled);
     }
 

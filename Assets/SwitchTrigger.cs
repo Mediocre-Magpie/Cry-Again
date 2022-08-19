@@ -1,29 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class jigsawTrigger : MonoBehaviour
+public class SwitchTrigger : MonoBehaviour
 {
+    // Start is called before the first frame update
+   
     [SerializeField] GameObject interactText;
     [SerializeField] GameObject puzzle;
 
-    public static bool inJigsawTrigger;
+    public static bool inTwoTrigger;
 
     public int id;
-    private void Awake()
-    {
-        interactText.SetActive(false);
-    }
 
-    
+    private void Start()
+    {
+
+       
+    }
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             interactText.SetActive(true);
 
-            inJigsawTrigger = true;
+            inTwoTrigger = true;
 
             GameEvents.current.PuzzleTriggerEnter(id);
         }
@@ -32,11 +33,12 @@ public class jigsawTrigger : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         
-        
+
         interactText.SetActive(false);
-        
-        inJigsawTrigger = false;
-        
+
+        inTwoTrigger = false;
+
         GameEvents.current.PuzzleTriggerExit(id);
     }
+   
 }
