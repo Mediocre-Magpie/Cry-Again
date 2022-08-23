@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44815344, g: 0.49816883, b: 0.57555336, a: 1}
+  m_IndirectSpecularColor: {r: 0.44815344, g: 0.4981693, b: 0.5755543, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -300,6 +300,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b2ef63406207c74b8ff628db1575eae, type: 3}
+--- !u!1 &1775002121 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2838678184894854703, guid: 6b2ef63406207c74b8ff628db1575eae, type: 3}
+  m_PrefabInstance: {fileID: 1775002120}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1775002122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775002121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e888c8e972f22104ab018936ea2685b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1789437472
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,7 +400,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1789437475}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1775002122}
+        m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1789437475
 MonoBehaviour:
   m_ObjectHideFlags: 0
