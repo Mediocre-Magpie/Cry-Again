@@ -6,11 +6,16 @@ public class SwitchOneScript : MonoBehaviour
 {
     [SerializeField] GameObject interactText;
     [SerializeField] GameObject SecondSwitch;
-    
+    public Switch1Win win;
+
     public static bool inSwitchOneTrigger;
 
-   
-    // Start is called before the first frame update
+
+    void Start()
+    {
+
+        
+    }
     private void Awake()
     {
         interactText.SetActive(false);
@@ -26,8 +31,13 @@ public class SwitchOneScript : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
+                
                 SecondSwitch.SetActive(true);
+                win.SwitchWin();
+                
             }
+
+
         }
     }
 
