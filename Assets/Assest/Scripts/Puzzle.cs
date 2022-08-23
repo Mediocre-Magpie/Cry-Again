@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Puzzle : MonoBehaviour
 {
@@ -65,7 +66,7 @@ public class Puzzle : MonoBehaviour
         }
         else if (id == 2 && jigsawTrigger.inJigsawTrigger == true)
         {
-            Debug.Log("Load");
+            SceneManager.LoadScene(3);
         }
 
         else if (id == 3 && SwitchOneScript.inSwitchOneTrigger == true)
